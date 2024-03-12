@@ -111,23 +111,26 @@ def real_damage(player, option):
         
     
 def Fight(player, plaier):
-    
-        plaier.Health -= real_damage(player, equipment(player))
-        print(plaier.Health)
-
-def turn():
     while player.isAlive() and plaier.isAlive():
-    Fight()
+        print("//////////////////////////////////////////////////")
+        print("Player 1 Turn!")
+        print("//////////////////////////////////////////////////")
+        damage = 0
+        damage = real_damage(player, equipment(player))
+        plaier.Health -= damage
+        print(player.name, " has caused ", damage, " of damage to ", plaier.name, " and now ", plaier.name, " health is ", plaier.Health, ".")
+        print("//////////////////////////////////////////////////")
+        print("Player 2 Turn!")
+        print("//////////////////////////////////////////////////")
+        damage = 0
+        damage = real_damage(plaier, equipment(plaier))
+        player.Health -= damage
+        print(plaier.name, " has caused ", damage, " of damage to ", player.name, " and now ", player.name, " health is ", player.Health, ".")
 
 
 
 
-player1 = create_player()
-player2 = create_player()
 
-
-
-""""
 print("////////////////////////////////////////////////////////")
 print("////////////////////////////////////////////////////////")
 print("Welcome to the game! Let's start creating the players!")
@@ -148,4 +151,10 @@ print("Nice! This will be an epic fight!")
 print("Lets present our figthers!!")
 print("player 1 description! \n name: ", player1.name, " \n Type: ", player1.type, "\n Health: ", player1.Health, "\n Damage: ", player1.Damage, "\n Defense: ", player1.Defense)
 print("player 2 description! \n name: ", player2.name, " \n Type: ", player2.type, "\n Health: ", player2.Health, "\n Damage: ", player2.Damage, "\n Defense: ", player2.Defense)
-"""
+
+Fight(player1, player2)
+
+if player2.Health < 0:
+    print(player2.name, " is Dead! ", player1.name, "won the fight!")
+elif player1.Health < 0:
+    print(player1.name, " is Dead! ", player2.name, "won the fight!")
